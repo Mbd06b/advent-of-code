@@ -1,0 +1,54 @@
+projects:
+  - name: AoC-2020
+    source:
+      type: git
+      location: 'https://github.com/Mbd06b/AoC-2020.git'
+      branch: main
+metadata:
+  name: java-console
+components:
+  - id: redhat/java11/latest
+    type: chePlugin
+  - mountSources: true
+    memoryLimit: 512Mi
+    type: dockerimage
+    volumes:
+      - name: m2
+        containerPath: /home/user/.m2
+    image: 'quay.io/eclipse/che-java11-maven:7.17.0'
+    alias: maven
+    env:
+      - value: ''
+        name: MAVEN_CONFIG
+      - value: >-
+          -XX:MaxRAMPercentage=50 -XX:+UseParallelGC -XX:MinHeapFreeRatio=10
+          -XX:MaxHeapFreeRatio=20 -XX:GCTimeRatio=4
+          -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true
+          -Xms20m -Djava.security.egd=file:/dev/./urandom -Duser.home=/home/user
+        name: MAVEN_OPTS
+      - value: >-
+          -XX:MaxRAMPercentage=50 -XX:+UseParallelGC -XX:MinHeapFreeRatio=10
+          -XX:MaxHeapFreeRatio=20 -XX:GCTimeRatio=4
+          -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true
+          -Xms20m -Djava.security.egd=file:/dev/./urandom
+        name: JAVA_OPTS
+      - value: >-
+          -XX:MaxRAMPercentage=50 -XX:+UseParallelGC -XX:MinHeapFreeRatio=10
+          -XX:MaxHeapFreeRatio=20 -XX:GCTimeRatio=4
+          -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true
+          -Xms20m -Djava.security.egd=file:/dev/./urandom
+        name: JAVA_TOOL_OPTIONS
+apiVersion: 1.0.0
+commands:
+  - name: maven build
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/AoC-2020'
+        type: exec
+        command: mvn clean install
+        component: maven
+  - name: maven build and run
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/AoC-2020'
+        type: exec
+        command: mvn clean install && java -jar ./target/*.jar
+        component: maven
