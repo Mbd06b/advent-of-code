@@ -1,0 +1,93 @@
+{
+  "v": "4.0",
+  "policies" : {
+  "create" : "perUser"
+  },
+  "workspace": {
+    "defaultEnv": "java",
+    "environments": [
+      {
+        "name": "java",
+        "machineConfigs": [
+          {
+            "limits": {
+              "ram": 1000
+            },
+            "name": "ws-machine",
+            "type": "docker",
+            "source": {
+              "location": "http://beta.codenvy.com/api/recipe/recipega4hxep75ipg04yo/script",
+              "type": "recipe"
+            },
+            "dev": true
+          }
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "links": [],
+        "name": "AoC-2020",
+        "attributes": {
+          "maven.artifactId": [
+            "AoC-2020"
+          ],
+          "maven.packaging": [
+            "jar"
+          ],
+          "vcs.provider.name": [
+            "git"
+          ],
+          "maven.version": [
+            "1.0-SNAPSHOT"
+          ],
+          "git.current.branch.name": [
+            "master"
+          ],
+          "language": [
+            "java"
+          ],
+          "git.repository.remotes": [
+            "https://github.com/che-samples/AoC-2020.git"
+          ],
+          "maven.groupId": [
+            "org.eclipse.che.examples"
+          ]
+        },
+        "type": "maven",
+        "source": {
+          "location": "https://github.com/che-samples/AoC-2020.git",
+          "type": "git",
+          "parameters": {}
+        },
+        "modules": [],
+        "path": "/AoC-2020",
+        "problems": [],
+        "mixins": [
+          "git"
+        ]
+      }
+    ],
+    "name": "java",
+    "attributes": {},
+    "commands": [
+      {
+        "commandLine": "mvn -f ${current.project.path} clean install",
+        "name": "AoC-2020: build",
+        "attributes": {
+          "previewUrl": ""
+        },
+        "type": "mvn"
+      },
+      {
+        "commandLine": "mvn -f ${current.project.path} clean install && java -jar ${current.project.path}/target/*.jar",
+        "name": "AoC-2020: run",
+        "attributes": {
+          "previewUrl": ""
+        },
+        "type": "mvn"
+      }
+    ],
+    "links": []
+  }
+}
