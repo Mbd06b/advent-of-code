@@ -4,16 +4,14 @@ package com.worscipe.aoc;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.worscipe.aoc.one.Password;
 import com.worscipe.aoc.utility.FileResourcesUtil;
 import com.worscipe.aoc.utility.ListUtil;
 
 public class AdventOfCodeMainRunner {
 
     public static void main(String... argvs) {
-        String a = "Che";
-        System.out.println("Hello World " + a + "!");
-
-
+  
         //Day 1
         List<String> strList = new ArrayList<>();
         List<Integer> numList = new ArrayList<>();
@@ -24,7 +22,7 @@ public class AdventOfCodeMainRunner {
         }
 
         if(!strList.isEmpty()){
-          numList = ListUtil.convertStringListToIntList(strList, Integer::parseInt);
+          numList = ListUtil.convertStringListToTypeList(strList, Integer::parseInt);
         
           outerloop:
           for(int i = 0; i < numList.size(); i++ ){
@@ -56,10 +54,34 @@ public class AdventOfCodeMainRunner {
                         }
                     }
                 }
-            }
+            } 
         }
 
-        
+        //DAY 2 
+        List<String> inputList = new ArrayList<>();
+        List<Password> passwordList = new ArrayList<>();  
+        try{
+            inputList = FileResourcesUtil.getLines("12-2-2020/day2Input.txt");
+        }catch(Exception e){
+            System.out.print(e);
+        }
+
+        passwordList = ListUtil.convertStringListToTypeList(inputList, Password::parsePassword);
+        Integer occuranceCount = 0;
+        Integer positionValidCount = 0;
+        if(!inputList.isEmpty()){
+            for(Password password : passwordList){
+               if(password.isOccuranceValid()){
+                   occuranceCount = occuranceCount + 1; 
+               }
+               if(password.isPositionValid()){
+                   positionValidCount = positionValidCount + 1;
+               }
+            }
+        System.out.println("Number of valid character occurance passwords: " + occuranceCount.toString());
+        System.out.println("Number of valid character position passwords: " + positionValidCount.toString());
+
+        }
 
     }
 }
