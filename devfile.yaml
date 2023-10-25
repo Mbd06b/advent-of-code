@@ -8,10 +8,9 @@ metadata:
     - Maven
 projects:
   - name: advent-of-code
-    source:
-      type: git
-      location: 'https://github.com/Mbd06b/advent-of-code.git'
-      branch: main
+    git:
+      remotes: git
+        origin: 'https://github.com/Mbd06b/advent-of-code.git'
 metadata:
   name: advent-of-code
 components:
