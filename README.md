@@ -1,4 +1,4 @@
-[![Contribute](https://www.eclipse.org/che/contribute.svg)](https://code.ethosengine.com/#https://github.com/Mbd06b/advent-of-code)
+[![Contribute](https://www.eclipse.org/che/contribute.svg)](https://code.ethosengine.com/#https://github.com/Mbd06b/advent-of-code?new&che-editor=che-incubator/che-idea/next)
 # console-java-simple
 
 A simple java "Hello World!" application, buildable with both maven and gradle. Useful for testing Eclipse Che Java workspaces.
