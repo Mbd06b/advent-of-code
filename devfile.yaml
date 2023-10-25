@@ -9,10 +9,8 @@ metadata:
 projects:
   - name: advent-of-code
     git:
-      remotes: git
+      remotes:
         origin: 'https://github.com/Mbd06b/advent-of-code.git'
-metadata:
-  name: advent-of-code
 components:
   - name: tools
     container:
