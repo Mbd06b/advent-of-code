@@ -5,7 +5,7 @@ projects:
       location: 'https://github.com/Mbd06b/advent-of-code.git'
       branch: main
 metadata:
-  name: java-console
+  name: advent-of-code
 components:
   - id: redhat/java11/latest
     type: chePlugin
@@ -42,13 +42,13 @@ apiVersion: 1.0.0
 commands:
   - name: maven build
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/aoc'
+      - workdir: '${CHE_PROJECTS_ROOT}/advent-of-code'
         type: exec
         command: mvn clean install
         component: maven
   - name: maven build and run
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/aoc'
+      - workdir: '${CHE_PROJECTS_ROOT}/advent-of-code'
         type: exec
         command: mvn clean install && java -jar ./target/*.jar
         component: maven
